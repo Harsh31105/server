@@ -3,7 +3,7 @@
     <main id="mainSection">
         <div class="container">
             <div class="box-nav d-flex justify-between">
-                <a href="/add" class="border-shadow">
+                <a href="/add-user" class="border-shadow">
                     <span class="text-gradient">
                         New User <i class="fas fa-user"></i>
                     </span>
@@ -18,31 +18,46 @@
                             <th>ID</th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Address</th>
                             <th>Gender</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Harsh</td>
-                                <td>example@gmail.com</td>
-                                <td>Male</td>
-                                <td>Active Maybe...</td>
-                                <td>
-                                    <a href="/update" class="btn border-shadow update">
-                                        <span class="text-gradient">
+                            <% for(var i = 0 ; i < users.length ; i++){%>
+                                <tr>
+                                    <td>
+                                        <%= i+1 %>
+                                    </td>
+                                    <td>
+                                        <%= users[i].name %>
+                                    </td>
+                                    <td>
+                                        <%= users[i].email %>
+                                    </td>
+                                    <td>
+                                        <%= users[i].address %>
+                                    </td>
+                                    <td>
+                                        <%= users[i].gender %>
+                                    </td>
+                                    <td>
+                                        <%= users[i].status %>
+                                    </td>
+                                    <td>
+                                        <a href="/update-user?id=<%= users[i]._id %>" class="btn border-shadow update">
+                                            <span class="text-gradient">
                                             <i class="fas fa-pencil-alt"></i>
                                         </span>
-                                    </a>
-                                    <a class="btn border-shadow delete" data-id="">
-                                        <span class="text-gradient">
+                                        </a>
+                                        <a class="btn border-shadow delete" data-id="<%= users[i]._id %>">
+                                            <span class="text-gradient">
                                             <i class="fas fa-times"></i>
                                         </span>
-                                    </a>
-                                </td>
-                            </tr>
-
+                                        </a>
+                                    </td>
+                                </tr>
+                                <% }%>
 
                         </tbody>
                     </thead>
